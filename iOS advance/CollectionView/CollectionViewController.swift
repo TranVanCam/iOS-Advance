@@ -26,6 +26,12 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         clwLayout()
     }
     
+    @IBAction func goToTableView(_ sender: Any) {
+        let tableVC = TableViewController()
+        self.navigationController?.pushViewController(tableVC, animated: true)
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         users.count
     }
