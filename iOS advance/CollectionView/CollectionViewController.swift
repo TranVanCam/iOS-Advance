@@ -16,6 +16,8 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.delegate = self
+        collectionView.dataSource = self
         self.navigationController?.isNavigationBarHidden = true
         let nib = UINib(nibName: "CustomCollectionViewCell", bundle: .main)
         collectionView.register(nib, forCellWithReuseIdentifier: "CustomCollectionViewCell")
@@ -55,7 +57,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
      func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
          switch kind {
          case UICollectionView.elementKindSectionHeader:
-                let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "CollectionHeaderView", for: indexPath) as! CollectionHeaderView
+                let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header", for: indexPath) as! CollectionHeaderView
                 reusableview.frame = CGRect(x: 0 , y: 0, width: self.view.frame.width, height: 50)
                 
                 reusableview.titleLabel.text = "Users"
